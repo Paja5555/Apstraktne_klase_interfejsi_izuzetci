@@ -65,7 +65,7 @@ public abstract class Vozilo {
         return kategorija;
     }
 
-    public void setKategorija(KategorijaVozila kategorija) throws Exception {
+    public void setKategorija(KategorijaVozila kategorija) throws VoziloException{
         if(kategorija==null){
             throw new VoziloException("NEISPRAVNA KATEGORIJA");
         }
