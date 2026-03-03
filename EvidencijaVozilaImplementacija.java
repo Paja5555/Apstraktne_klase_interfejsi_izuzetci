@@ -5,6 +5,10 @@ import vozilo.evidencija.EvidencijaVozila;
 import vozilo.izuzeci.VoziloException;
 import vozilo.kategorija.KategorijaVozila;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -71,8 +75,58 @@ public class EvidencijaVozilaImplementacija implements EvidencijaVozila {
             System.out.println("Teretnih: " + brojTeretnih);
             System.out.println("Motornih: " + brojMotora);
         }
-
-
     }
+
+    public void arhivirajVozila(){
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("arhiva.txt")))){
+            for (Vozilo v:vozila) {
+                        if (v.isuSaobraćaju() && v.getRegistracija().startsWith("BG")) {
+                            out.println(v);
+                        }
+
+            }
+            out.close();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+   /* public void sacuvajVozilaSaKilometrazom(double minKilometraza){
+        for(Vozilo v: vozila){
+            if(v.getPredjenaKilometraža()>=minKilometraza){
+                try {
+                    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("kilometraza.txt")));
+                    out.println(v);
+                    out.close();
+
+
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    } */
+    public  void  sacuvajVozilaSaKilometrazom(double minKilometraza){
+        try( PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("kilometraza.txt")))){
+            for(Vozilo v: vozila) {
+                if (v.getPredjenaKilometraža() >= minKilometraza) {
+                    out.println(v);
+                }
+            }
+            out.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
 }
+
+
 
