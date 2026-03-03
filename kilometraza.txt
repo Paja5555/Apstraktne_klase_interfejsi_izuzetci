@@ -1,0 +1,3 @@
+Vozilo{registracija='KG-249-NT', vlasnik='null', datumRegistracije=null, predjenaKilometraža=356000.0, uSaobraćaju=false, kategorija=null}
+Vozilo{registracija='BG-491-AU', vlasnik='null', datumRegistracije=null, predjenaKilometraža=198000.0, uSaobraćaju=true, kategorija=null}
+Vozilo{registracija='BG-189-PO', vlasnik='null', datumRegistracije=null, predjenaKilometraža=211000.0, uSaobraćaju=true, kategorija=null}
